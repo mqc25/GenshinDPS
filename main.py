@@ -45,5 +45,5 @@ if __name__ == '__main__':
     for dmg, sequence_name, is_vape in zip(total_dmg, sequence, vape):
         print("{} {:.2f} {}".format(sequence_name, dmg, is_vape))
 
-    print("Total Dmg: {:.2f} DPS over 12s: {:.2f}".format(sum(total_dmg), sum(total_dmg)/15.))
+    print("Total Dmg: {:.2f} DPS over 15s: {:.2f}".format(sum(total_dmg), sum(total_dmg)/15.))
 
