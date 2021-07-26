@@ -33,5 +33,6 @@ Vape multiplier: 2.25 Enemy multiplier: 0.56
 | E3           | 29435.23  | True          |
 | NA1          | 22055.86  | True          |
 | NA2          | 9593.04   | False         |
-| NA3          | 24297.31  | True          |
-| Total        | 246416.96 | DPS: 16427.80 |
+| NA3          | 10816.83  | False         |
+| NA4          | 32945.07  | True          |
+| Total        | 265881.55 | DPS: 17725.44 |
