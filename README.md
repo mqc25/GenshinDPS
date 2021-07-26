@@ -24,7 +24,7 @@ Vape multiplier: 2.25 Enemy multiplier: 0.56
 | ATK Sequence | DMG       | Vape?         |
 |--------------|-----------|---------------|
 | Q initial    | 43138.20  | True          |
-| Q_DoT        | 22514.74  | False         |
+| Q_DoT (4hit) | 22514.74  | False         |
 | NA1          | 19624.42  | True          |
 | E1           | 19892.34  | True          |
 | NA1          | 20434.90  | False         |
