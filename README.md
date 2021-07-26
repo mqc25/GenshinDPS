@@ -14,8 +14,8 @@ Sucrose give 200 EM and VV shred
 
 | Buff status                | BaseATK | ATK% | ATK  | CR | CD  | DMG_Bonus | EM  |
 |----------------------------|---------|------|------|----|-----|-----------|-----|
-| No buff                    | 943     | 116  | 2350 | 66 | 139 | 82        | 0   |
-| With team buff + resonance | 943     | 161  | 3452 | 66 | 139 | 82        | 200 |
+| No buff                    | 943     | 116  | 2350 | 66 | 139 | 62        | 0   |
+| With team buff + resonance | 943     | 161  | 3452 | 66 | 139 | 62        | 200 |
 
 Res multiplier: 1.15 Def multiplier: 0.49
 
@@ -23,8 +23,8 @@ Vape multiplier: 2.25 Enemy multiplier: 0.56
 
 | ATK Sequence | DMG       | Vape?         |
 |--------------|-----------|---------------|
-| Q initial    | 43138.20  | True          |
-| Q_DoT (4hit) | 22514.74  | False         |
+| Q initial    | 38387.30  | True          |
+| Q_DoT (4hit) | 20035.15  | False         |
 | NA1          | 19624.42  | True          |
 | E1           | 19892.34  | True          |
 | NA1          | 20434.90  | False         |
@@ -34,4 +34,4 @@ Vape multiplier: 2.25 Enemy multiplier: 0.56
 | NA1          | 22055.86  | True          |
 | NA2          | 9593.04   | False         |
 | NA3          | 24297.31  | True          |
-| Total        | 253647.46 | DPS: 16909.83 |
+| Total        | 246416.96 | DPS: 16427.80 |
