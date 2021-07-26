@@ -162,6 +162,8 @@ def dilucVapeRotation(character, stat, using_c6_xq=True, using_4_CW=True, enemy_
         diluc_NA_sequence = diluc_NA_sequence % len(character.NA_chain_framecount)
         sequence_name = "NA" + str(diluc_NA_sequence + 1)
         is_vape = False
+        print(last_NA_ICD_frame, ICD_counter)
+
         if last_NA_ICD_frame >= 2.5 * 60:
             is_vape = True
             ICD_counter = 0
@@ -174,12 +176,11 @@ def dilucVapeRotation(character, stat, using_c6_xq=True, using_4_CW=True, enemy_
             dmg = calculate_dmg(stat, character.NA_chain_damage[diluc_NA_sequence], enemy_multiplier, vape_multiplier)
         else:
             dmg = calculate_dmg(stat, character.NA_chain_damage[diluc_NA_sequence], enemy_multiplier)
-
-        diluc_NA_sequence += 1
-
-        total_dmg.append(dmg)
         last_NA_ICD_frame += character.NA_chain_framecount[diluc_NA_sequence]
         timer += character.NA_chain_framecount[diluc_NA_sequence]
+
+        diluc_NA_sequence += 1
+        total_dmg.append(dmg)
         sequence.append(sequence_name)
         vape.append(is_vape)
 
