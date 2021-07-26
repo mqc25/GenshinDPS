@@ -15,8 +15,7 @@ if __name__ == '__main__':
     Diluc.Q_frame_count = [145]
     Diluc.Q_damage = [2.866, 0.840]
     Diluc.Q_CD = 12
-    # A4
-    Diluc.DMG_Bonus += 0.2
+
 
     # Wolf R1 no proc
     WGS = weapon.Weapon("WGS", refinement_level=1, weapon_skill_proc=False)

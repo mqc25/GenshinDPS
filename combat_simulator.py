@@ -111,6 +111,9 @@ def dilucVapeRotation(character, stat, using_c6_xq=True, using_4_CW=True, enemy_
     sequence.append("Q_DoT_dmg")
     vape.append(False)
 
+    # A4
+    stat.DMG_Bonus += 0.2
+
     # NA-E-NA-E-NA-E with all 3 E vape and 1 NA vape:
     timer += 3 * character.NA_chain_framecount[0] + character.E_framecount[0] + character.E_framecount[1] + \
              character.E_framecount[2]
