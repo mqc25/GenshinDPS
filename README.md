@@ -6,7 +6,7 @@ Run the main python file
 ## Setup
 Diluc only dmg calculate for Diluc/XQ/Benny/Sucrose comp over 15s rotation (3s for support)
 
-Diluc lvl 90, 6/6/6 Talent with WGS R1, 4 CW with CD/Pyro/ATK, 11 CR rolls, 4 CD rolls
+Diluc lvl 90, 6/6/6 Talent with WGS R1 no skill proc, 4 CW with CD/Pyro/ATK, 11 CR rolls, 4 CD rolls
 
 Benny has Aquila with T6 Q and NO set
 
