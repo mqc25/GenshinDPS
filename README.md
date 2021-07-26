@@ -14,13 +14,10 @@ Sucrose give 200 EM and VV shred
 
 Rotation time 12s
 
-no buff Diluc
-
-BaseATK: 943.00 ATK%: 1.16 Total ATK: 2349.77 CR: 0.66 CD: 1.39 DMG_Bonus: 0.82 EM: 0.00
-
-buff Diluc with Aquila NO Benny T6, 200 EM from sucrose and 11 CR roll, 4 CD roll
-
-BaseATK: 943.00 ATK%: 1.61 Total ATK: 3452.12 CR: 0.66 CD: 1.39 DMG_Bonus: 0.82 EM: 200.00
+| Buff status                | BaseATK | ATK% | ATK  | CR | CD  | DMG_Bonus | EM  |
+|----------------------------|---------|------|------|----|-----|-----------|-----|
+| No buff                    | 943     | 116  | 2350 | 66 | 139 | 82        | 0   |
+| With team buff + resonance | 943     | 161  | 3452 | 66 | 139 | 82        | 200 |
 
 Res multiplier: 1.15 Def multiplier: 0.49
 
