@@ -62,7 +62,7 @@ def final_enemy_modifier(your_level=90, enemy_level=100, enemy_RES=0.1, using_VV
 
     res_modifier = 1.0 - final_res
     def_modifier = (your_level + 100) / ((1 - def_shred) * (enemy_level + 100) + your_level + 100)
-    print("Res multiplier: %.2f Def multiplier: %.2f".format(res_modifier, def_modifier))
+    print("Res multiplier: {:.2f} Def multiplier: {:.2f}".format(res_modifier, def_modifier))
 
     return res_modifier * def_modifier
 
@@ -85,7 +85,7 @@ def dilucVapeRotation(character, stat, using_c6_xq=True, using_4_CW=True, enemy_
                                             using_VV=using_VV, using_ZL=using_ZL, extra_shred=extra_shred,
                                             def_shred=def_shred)
 
-    print("Vape multiplier: %.2f Enemy multiplier: %.2f". format(vape_multiplier, enemy_multiplier))
+    print("Vape multiplier: {:.2f} Enemy multiplier: {:.2f}". format(vape_multiplier, enemy_multiplier))
 
     # start with 1 XQ sword status
     timer = 0.
