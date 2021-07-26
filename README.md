@@ -26,32 +26,17 @@ Res multiplier: 1.15 Def multiplier: 0.49
 
 Vape multiplier: 2.25 Enemy multiplier: 0.56
 
-Atk sequence ['Q initial dmg', 'Q_DoT_dmg', 'NA1', 'E1', 'NA1', 'E2', 'NA1', 'E3', 'NA2', 'NA3', 'NA4']
-
-DMG [43138.19894433712, 22514.74384157713, 19624.418626527127, 19892.33905262943, 20434.898470684362, 21416.049448031215, 21245.37831484159, 29435.22886020083, 21548.3602722294, 10816.831233788347, 32945.07114944792]
-
-Vape status [True, False, True, True, False, True, False, True, True, False, True]
-
-Q initial dmg 43138.20 True
-
-Q_DoT_dmg 22514.74 False
-
-NA1 19624.42 True
-
-E1 19892.34 True
-
-NA1 20434.90 False
-
-E2 21416.05 True
-
-NA1 21245.38 False
-
-E3 29435.23 True
-
-NA2 21548.36 True
-
-NA3 10816.83 False
-
-NA4 32945.07 True
-
-Total DMG: 263k, Avg DPS: 22K
+| ATK Sequence | DMG       | Vape?         |
+|--------------|-----------|---------------|
+| Q initial    | 43138.20  | True          |
+| Q_DoT        | 22514.74  | False         |
+| NA1          | 19624.42  | True          |
+| E1           | 19892.34  | True          |
+| NA1          | 20434.90  | False         |
+| E2           | 21416.05  | True          |
+| NA1          | 21245.38  | False         |
+| E3           | 29435.23  | True          |
+| NA1          | 22055.86  | True          |
+| NA2          | 9593.04   | False         |
+| NA3          | 24297.31  | True          |
+| Total        | 253647.46 | DPS: 16909.83 |
