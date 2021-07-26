@@ -8,7 +8,7 @@ Diluc only dmg calculate for Diluc/XQ/Benny/Sucrose comp over 15s rotation (3s f
 
 Diluc lvl 90, 6/6/6 Talent with WGS R1 no skill proc, 4 CW with CD/Pyro/ATK, 11 CR rolls, 4 CD rolls
 
-Benny has Aquila with T6 Q and NO set
+Benny has Aquila with T6 Q give 678 flat ATK and NO set
 
 Sucrose give 200 EM and VV shred
 
