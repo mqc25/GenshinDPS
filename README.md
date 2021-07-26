@@ -12,8 +12,6 @@ Benny has Aquila with T6 Q and NO set
 
 Sucrose give 200 EM and VV shred
 
-Rotation time 12s
-
 | Buff status                | BaseATK | ATK% | ATK  | CR | CD  | DMG_Bonus | EM  |
 |----------------------------|---------|------|------|----|-----|-----------|-----|
 | No buff                    | 943     | 116  | 2350 | 66 | 139 | 82        | 0   |
