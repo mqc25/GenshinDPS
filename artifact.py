@@ -2,10 +2,10 @@ class Artfiact:
     HP_sub_avg = 254.
     DEF_sub_avg = 19.5
     ATK_sub_avg = 16.5
-    HP_percent_sub_avg = 0.0495
+    HP_percent_sub_avg = 0.0498
     DEF_percent_sub_avg = 0.062
-    ATK_percent_sub_avg = 0.0495
-    EM_sub_avg = 19.5
+    ATK_percent_sub_avg = 0.0498
+    EM_sub_avg = 19.75
     ER_sub_avg = 5.5
     CR_sub_avg = 0.033
     CD_sub_avg = 0.066
@@ -51,7 +51,7 @@ class Artfiact:
         elif sub_type == "HP":
             self.HP += self.HP_sub_avg * num_roll
         elif sub_type == "HP_percent":
-            self.HP += self.HP_percent_sub_avg * num_roll
+            self.HP_percent += self.HP_percent_sub_avg * num_roll
         elif sub_type == "ATK":
             self.ATK += self.ATK_sub_avg * num_roll
         elif sub_type == "ATK_percent":
@@ -80,6 +80,8 @@ class Artfiact:
             self.DMG_Bonus += self.DMG_Bonus_Ele_Main
         elif main_type == "DMG_Bonus_Phys":
             self.DMG_Bonus += self.DMG_Bonus_Phys_Main
+        elif main_type == "Heal_Bonus":
+            self.Heal_Bonus += self.HealingBonus_Main
 
     def give_art_main_stat(self, main_types, include_feather_and_flower=True):
         for main_type in main_types:
@@ -98,6 +100,11 @@ class Artfiact:
 
         if set1 == "CW":
             self.DMG_Bonus += 0.15
+            if using_4_set:
+                return
+
+        elif set1 == "WT":
+            self.EM += 80
             if using_4_set:
                 return
 

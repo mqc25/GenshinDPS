@@ -1,6 +1,8 @@
 class Character:
     NA_chain_framecount = None
     NA_chain_damage = None
+    CA_framecount = None
+    CA_damage = None
     E_framecount = None
     E_damage = None
     E_CD = None

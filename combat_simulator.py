@@ -8,6 +8,7 @@ class Stat:
         self.BaseDEF = stat["BaseDEF"]
         self.BaseHP = stat["BaseHP"]
         self.HP = stat["HP"]
+        self.HP_percent = stat["HP_percent"]
         self.ATK = stat["ATK"]
         self.ATK_percent = stat["ATK_percent"]
         self.EM = stat["EM"]
@@ -33,6 +34,7 @@ def final_stat_calculator(character, weapon, artifact, using_NO=False, pyro_RES=
     BaseHP = character.BaseHP
     stat["BaseHP"] = BaseHP
     HP_percent = character.HP_percent + weapon.HP_percent + artifact.HP_percent
+    stat["HP_percent"] = HP_percent
     stat["HP"] = BaseHP * (1 + HP_percent) + artifact.HP
 
     BaseDEF = character.BaseDEF
@@ -185,3 +187,109 @@ def dilucVapeRotation(character, stat, using_c6_xq=True, using_4_CW=True, enemy_
         vape.append(is_vape)
 
     return total_dmg, sequence, vape
+
+def KkomiCAVapeRotation(character, stat, using_4_WT=True, enemy_level=100, enemy_RES=0.1, using_VV=False,
+                      using_ZL=True, extra_shred=0., def_shred=0.):
+
+        DPS_rotation_time = 10.0  # Benny Q duration
+        total_rotation_time = 15.0  # XQ Q CD
+
+        vape_multiplier = 2.0 * (1. + (278 * stat.EM / (stat.EM + 1400.)) / 100.)
+        enemy_multiplier = final_enemy_modifier(your_level=character.Level, enemy_level=enemy_level,
+                                                enemy_RES=enemy_RES,
+                                                using_VV=using_VV, using_ZL=using_ZL, extra_shred=extra_shred,
+                                                def_shred=def_shred)
+
+        print("Vape multiplier: {:.2f} Enemy multiplier: {:.2f}".format(vape_multiplier, enemy_multiplier))
+
+        # start with Pyro applied
+        timer = 0.
+        total_dmg = []
+        sequence = []
+        vape = []
+
+
+        A4_Bonus = 0.15 * stat.Heal_Bonus
+        Q_NA_DMG_Bonus = stat.HP * (character.Q_damage[1] + A4_Bonus)
+        Q_CA_DMG_Bonus = stat.HP * (character.Q_damage[2] + A4_Bonus)
+
+        # start with Q vape
+        sequence.append("Q_initial")
+        dmg = stat.HP * (1 + stat.DMG_Bonus) * character.Q_damage[0] * vape_multiplier * (1.0 + stat.CR * stat.CD) * enemy_multiplier
+        total_dmg.append(dmg)
+        vape.append(True)
+
+        # do 1 vape CA
+        sequence.append("CA")
+        stat.ATK += Q_CA_DMG_Bonus
+        stat.DMG_Bonus += using_4_WT * 0.35
+        dmg = calculate_dmg(stat, character.CA_damage[0], enemy_multiplier,
+                            vape_multiplier)
+        stat.ATK -= Q_CA_DMG_Bonus
+        stat.DMG_Bonus -= using_4_WT * 0.35
+        total_dmg.append(dmg)
+        vape.append(True)
+        timer += character.CA_framecount[0]
+
+        NA_sequence = 0
+        last_NA_ICD_frame = 0.
+        ICD_counter = 0
+        Benny_NO_timer = 5.5
+        Benny_Q_timer = 5.5
+
+        # Assuming both NA and CA will hit target at the end of the animation, NA and CA shared ICD
+        while timer < DPS_rotation_time * 60:
+            ICD_counter += 1
+            NA_sequence = NA_sequence % len(character.NA_chain_framecount)
+            is_vape = False
+            print(last_NA_ICD_frame, ICD_counter)
+
+            # if CA could vape then do CA
+            if last_NA_ICD_frame + character.CA_framecount[0] >= 2.5 * 60:
+                is_vape = True
+                ICD_counter = 0
+                last_NA_ICD_frame = 0
+            elif ICD_counter > 2:
+                is_vape = True
+                ICD_counter = 0
+
+            if is_vape:
+                NA_sequence = 0
+                timer += character.CA_framecount[0]
+                if timer + Benny_Q_timer > 12:
+                    stat.ATK -= 775
+                    Benny_Q_timer -= 9999
+                if timer + Benny_NO_timer > 10:
+                    stat.ATK -= stat.BaseATK * 0.2
+                    Benny_NO_timer -= 9999
+
+                sequence_name = "CA"
+                stat.ATK += Q_CA_DMG_Bonus
+                print("CA", stat.ATK)
+                stat.DMG_Bonus += using_4_WT * 0.35
+                dmg = calculate_dmg(stat, character.CA_damage[0], enemy_multiplier,
+                                    vape_multiplier)
+                stat.ATK -= Q_CA_DMG_Bonus
+                stat.DMG_Bonus -= using_4_WT * 0.35
+            else:
+                if timer + Benny_Q_timer > 12:
+                    stat.ATK -= 775
+                    Benny_Q_timer -= 9999
+                if timer + Benny_NO_timer > 10:
+                    stat.ATK -= stat.BaseATK * 0.2
+                    Benny_NO_timer -= 9999
+
+                timer += character.NA_chain_framecount[NA_sequence]
+                sequence_name = "NA" + str(NA_sequence + 1)
+                stat.ATK += Q_NA_DMG_Bonus
+                print("NA", stat.ATK)
+                dmg = calculate_dmg(stat, character.NA_chain_damage[NA_sequence], enemy_multiplier)
+                stat.ATK -= Q_NA_DMG_Bonus
+                last_NA_ICD_frame += character.NA_chain_framecount[NA_sequence]
+                NA_sequence += 1
+
+            total_dmg.append(dmg)
+            sequence.append(sequence_name)
+            vape.append(is_vape)
+
+        return total_dmg, sequence, vape

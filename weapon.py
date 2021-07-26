@@ -23,3 +23,16 @@ class Weapon:
             self.CR = 0.
             self.CD = 0.
             self.DMG_Bonus = 0.
+
+        elif weapon_name == "DV":
+            self.BaseATK = 608.
+            self.HP_percent = 0.496
+            self.Heal_Bonus = 0.1
+
+            self.DEF_percent = 0.
+            self.ATK_percent = 0.
+            self.EM = 0.
+            self.ER = 0.
+            self.CR = 0.
+            self.CD = 0.
+            self.DMG_Bonus = 0.
