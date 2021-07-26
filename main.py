@@ -37,7 +37,7 @@ if __name__ == '__main__':
     print("buff Diluc with Aquila NO Benny T6, 200 EM from sucrose and 11 CR roll, 4 CD roll")
     print("BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f}".format(stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM))
 
-    # rotation of Diluc/XQ/Benny/Sucrose assume sucrose give 200 EM and c6 XQ  with 12s DPS duration
+    # rotation of Diluc/XQ/Benny/Sucrose assume sucrose give 200 EM  with 15s rotation duration (12s Diluc, 3s support)
     total_dmg, sequence, vape = combat_simulator.dilucVapeRotation(Diluc, stat)
     print(sequence)
     print(total_dmg)
@@ -46,5 +46,5 @@ if __name__ == '__main__':
     for dmg, sequence_name, is_vape in zip(total_dmg, sequence, vape):
         print("{} {:.2f} {}".format(sequence_name, dmg, is_vape))
 
-    print("Total Dmg: {:.2f} DPS over 12s: {:.2f}".format(sum(total_dmg), sum(total_dmg)/12.))
+    print("Total Dmg: {:.2f} DPS over 12s: {:.2f}".format(sum(total_dmg), sum(total_dmg)/15.))
 
