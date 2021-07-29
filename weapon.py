@@ -36,3 +36,40 @@ class Weapon:
             self.CR = 0.
             self.CD = 0.
             self.DMG_Bonus = 0.
+
+        elif weapon_name == "DM":
+            self.BaseATK = 454.
+            self.HP_percent = 0.
+            self.Heal_Bonus = 0.
+            self.DEF_percent = 0.
+            self.ATK_percent = (0.24 + 0.06 * (refinement_level - 1)) if weapon_skill_proc else (0.16 + 0.04 * (refinement_level - 1))
+            self.EM = 0.
+            self.ER = 0.
+            self.CR = 0.368
+            self.CD = 0.
+            self.DMG_Bonus = 0.
+
+        elif weapon_name == "Homa":
+            self.BaseATK = 608.
+            self.HP_percent = 0.2 + 0.05 * (refinement_level - 1)
+            self.Heal_Bonus = 0.
+            self.DEF_percent = 0.
+            self.ATK_percent = 0.
+            self.EM = 0.
+            self.ER = 0.
+            self.CR = 0.
+            self.CD = 0.662
+            self.DMG_Bonus = 0.
+            self.ATK_HP_scale = weapon_skill_proc * (0.008 + 0.002 * (refinement_level - 1))
+
+        elif weapon_name == "DB":
+            self.BaseATK = 454.
+            self.HP_percent = 0.
+            self.Heal_Bonus = 0.
+            self.DEF_percent = 0.
+            self.ATK_percent = 0.
+            self.EM = 221.
+            self.ER = 0.
+            self.CR = 0.
+            self.CD = 0.
+            self.DMG_Bonus = weapon_skill_proc * (0.2 + 0.04 * (refinement_level - 1))

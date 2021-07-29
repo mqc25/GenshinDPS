@@ -293,3 +293,77 @@ def KkomiCAVapeRotation(character, stat, using_4_WT=True, enemy_level=100, enemy
             vape.append(is_vape)
 
         return total_dmg, sequence, vape
+
+def HuTaoVape(character, stat, using_4_CW=False, using_4_Red=False, enemy_level=100, enemy_RES=0.1, using_VV=False,
+                      using_ZL=False, usingNO=False, usingC2Chong=False, extra_shred=0., def_shred=0.):
+    rotation_time = 21.
+    if usingC2Chong:
+        rotation_time *= 0.85
+    if usingNO:
+        stat.ATK_percent += 0.2
+
+
+    DPS_rotation_time = 9.
+
+    vape_multiplier = 1.5 * (1. + (278 * stat.EM / (stat.EM + 1400.) / 100. + 0.15 * using_4_CW))
+    melt_multiplier = 2.0 * (1. + (278 * stat.EM / (stat.EM + 1400.) / 100. + 0.15 * using_4_CW))
+
+    enemy_multiplier = final_enemy_modifier(your_level=character.Level, enemy_level=enemy_level,
+                                            enemy_RES=enemy_RES,
+                                            using_VV=using_VV, using_ZL=using_ZL, extra_shred=extra_shred,
+                                            def_shred=def_shred)
+
+    print("Vape multiplier: {:.2f} Melt multiplier: {:.2f} Enemy multiplier: {:.2f}".format(vape_multiplier, melt_multiplier, enemy_multiplier))
+
+    # start with E and freeze
+    timer = 0.
+    total_dmg = []
+    sequence = []
+    vape = []
+
+    # start with Q melt
+    sequence.append("Q_hit_melt")
+    dmg = calculate_dmg(stat, character.Q_damage[0], enemy_multiplier, melt_multiplier)
+    total_dmg.append(dmg)
+    vape.append(True)
+    timer += character.Q_frame_count[0]
+
+    ICD_count = 2
+
+    # 2xEbloomvape
+    sequence.append("2xVapeEbloom")
+    dmg = calculate_dmg(stat, character.E_blossom[0], enemy_multiplier, vape_multiplier) * 2
+    total_dmg.append(dmg)
+    vape.append(True)
+
+    if using_4_Red:
+        stat.DMG_Bonus += 0.5
+    #N1C till end
+    CW_4pc_bonus_timer = 6*60
+    while timer < DPS_rotation_time * 60:
+        ICD_count += 1
+        is_vape = False
+        if ICD_count > 2:
+            is_vape = True
+            ICD_count = 0
+
+        if is_vape:
+            dmg = calculate_dmg(stat, character.NA_chain_damage[0], enemy_multiplier, vape_multiplier)
+        else:
+            dmg = calculate_dmg(stat, character.NA_chain_damage[0], enemy_multiplier)
+        total_dmg.append(dmg)
+        sequence.append("NA1")
+        vape.append(is_vape)
+
+        timer += character.NA_chain_framecount[0]
+
+        if timer > DPS_rotation_time * 60:
+            break
+
+        dmg = calculate_dmg(stat, character.CA_damage[0], enemy_multiplier, vape_multiplier)
+        total_dmg.append(dmg)
+        timer += character.CA_framecount[0]
+        sequence.append("CA")
+        vape.append(True)
+
+    return total_dmg, sequence, vape, sum(total_dmg) / rotation_time

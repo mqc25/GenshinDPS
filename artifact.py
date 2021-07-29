@@ -98,13 +98,23 @@ class Artfiact:
     def give_art_set_bonus(self, set1, set2):
         using_4_set = set2 is None
 
-        if set1 == "CW":
+        if set1 == "CW" or set2 == "CW":
             self.DMG_Bonus += 0.15
             if using_4_set:
                 return
 
-        elif set1 == "WT":
+        if set1 == "WT" or set2 == "WT":
             self.EM += 80
+            if using_4_set:
+                return
+
+        if set1 == "Totm" or set2 == "Totm":
+            self.HP_percent += 0.2
+            if using_4_set:
+                return
+
+        if set1 == "Red" or set2 == "Red":
+            self.ATK_percent += 0.18
             if using_4_set:
                 return
 

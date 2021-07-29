@@ -3,20 +3,7 @@ from artifact import Artfiact
 
 
 def runDilucVapeCal():
-    Diluc = character.Character()
-    Diluc.BaseATK = 335.
-    Diluc.BaseDEF = 784.
-    Diluc.BaseHP = 12981.
-    Diluc.CR += 0.242
-    Diluc.NA_chain_framecount = [24, 77, 115, 181]
-    Diluc.NA_chain_damage = [1.3038, 1.2738, 1.4363, 1.9475]
-    Diluc.E_framecount = [45, 52, 81]
-    Diluc.E_damage = [1.3216, 1.3664, 1.8064]
-    Diluc.E_CD = 10.
-    Diluc.Q_frame_count = [145]
-    Diluc.Q_damage = [2.866, 0.840]
-    Diluc.Q_CD = 12
-
+    Diluc = character.Diluc()
     # Wolf R1 no proc
     WGS = weapon.Weapon("WGS", refinement_level=1, weapon_skill_proc=False)
 
@@ -51,19 +38,7 @@ def runDilucVapeCal():
     print("Total Dmg: {:.2f} DPS over 15s: {:.2f}".format(sum(total_dmg), sum(total_dmg) / 15.))
 
 def runKkomiVapeCal():
-    Kkomi = character.Character()
-    Kkomi.BaseATK = 222.
-    Kkomi.BaseDEF = 615.
-    Kkomi.BaseHP = 11695.
-    Kkomi.NA_chain_framecount = [25, 25, 50]
-    Kkomi.NA_chain_damage = [1.094, 0.9846, 1.5089]
-    Kkomi.CA_framecount = [90]
-    Kkomi.CA_damage = [2.3731]
-    Kkomi.Q_frame_count = [120]
-    Kkomi.Q_damage = [0.1667, 0.0774, 0.1084]
-    Kkomi.Q_CD = 18
-    Kkomi.DMG_Bonus += 0.288
-
+    Kkomi = character.Kkomi()
     # Wolf R1 no proc
     DV = weapon.Weapon("DV", refinement_level=1, weapon_skill_proc=False)
 
@@ -110,5 +85,144 @@ def runKkomiVapeCal():
 
     print("Total Dmg: {:.2f} DPS over 15s: {:.2f}".format(sum(total_dmg), sum(total_dmg) / 15.))
 
+def runHTVapeComp(character, weapon, artifact, usingChongC2=False, usingNO=False, usingZL=False):
+    pass
+
 if __name__ == '__main__':
-    runKkomiVapeCal()
+    HuTao = character.HuTao()
+
+    # R1 Homa low HP
+    Homa = weapon.Weapon("Homa", refinement_level=1, weapon_skill_proc=True)
+
+    # Artifact with 15 crit roll and 5 EM roll
+    # 4CW-HPsand 11 CR rolls 4 CD rolls for Homa
+    CW_HP = Artfiact()
+    CW_HP.give_art_main_stat(["CR", "HP", "DMG_Bonus_Ele"])
+    CW_HP.give_art_sub_stat(["CR", "CD", "EM"], [14, 1, 5])
+    CW_HP.give_art_set_bonus("CW", None)
+
+    Homa_CW_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_HP, using_NO=True, pyro_RES=False, benny_Buff=0.,
+                                                  EM_Buff=0)
+
+    # 4CW-EMsand 11 CR rolls 4 CD rolls
+    CW_EM = Artfiact()
+    CW_EM.give_art_main_stat(["CR", "EM", "DMG_Bonus_Ele"])
+    CW_EM.give_art_sub_stat(["CR", "CD", "HP_percent"], [14, 1, 5])
+    CW_EM.give_art_set_bonus("CW", None)
+
+    Homa_CW_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_EM, using_NO=True, pyro_RES=False, benny_Buff=0.,
+                                                  EM_Buff=0)
+
+    # 4Red-HPsand 11 CR rolls 4 CD rolls
+    Red_HP = Artfiact()
+    Red_HP.give_art_main_stat(["CR", "HP", "DMG_Bonus_Ele"])
+    Red_HP.give_art_sub_stat(["CR", "CD", "EM"], [14, 1, 5])
+    Red_HP.give_art_set_bonus("Red", None)
+
+    Homa_Red_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, Red_HP, using_NO=True, pyro_RES=False,
+                                                             benny_Buff=0.,
+                                                             EM_Buff=0)
+
+    # 4Red-EMsand 11 CR rolls 4 CD rolls
+    Red_EM = Artfiact()
+    Red_EM.give_art_main_stat(["CR", "EM", "DMG_Bonus_Ele"])
+    Red_EM.give_art_sub_stat(["CR", "CD", "HP_percent"], [14, 1, 5])
+    Red_EM.give_art_set_bonus("Red", None)
+
+    Homa_Red_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, Red_EM, using_NO=True, pyro_RES=False,
+                                                             benny_Buff=0.,
+                                                             EM_Buff=0)
+
+    # 2CW-2WT-HPsand 11 CR rolls 4 CD rolls for Homa
+    CW_WT_HP = Artfiact()
+    CW_WT_HP.give_art_main_stat(["CR", "HP", "DMG_Bonus_Ele"])
+    CW_WT_HP.give_art_sub_stat(["CR", "CD", "EM"], [14, 1, 5])
+    CW_WT_HP.give_art_set_bonus("CW", "WT")
+
+    Homa_CW_WT_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_WT_HP, using_NO=True, pyro_RES=False,
+                                                             benny_Buff=0.,
+                                                             EM_Buff=0)
+
+    # 2CW-2Totm-EMsand 11 CR rolls 4 CD rolls for Homa
+    CW_TM_EM = Artfiact()
+    CW_TM_EM.give_art_main_stat(["CR", "EM", "DMG_Bonus_Ele"])
+    CW_TM_EM.give_art_sub_stat(["CR", "CD", "EM"], [14, 1, 5])
+    CW_TM_EM.give_art_set_bonus("CW", "Totm")
+
+    Homa_CW_TM_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_TM_EM, using_NO=True, pyro_RES=False,
+                                                                benny_Buff=0.,
+                                                                EM_Buff=0)
+
+    # # HuTao-Homa-4CW-EMsand
+    # stat = Homa_CW_EM_stat
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.DMG_Bonus += 0.075
+    # print("HuTao-Homa-4CW-EMsand low HP with E")
+    # print("BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+    #     stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    # # HuTao-Homa-4CW-HPsand
+    # stat = Homa_CW_HP_stat
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.DMG_Bonus += 0.075
+    # print("HuTao-Homa-4CW-HPsand low HP with E")
+    # print(
+    #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+    #         stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    # # HuTao-Homa-4Red-EMsand
+    # stat = Homa_Red_EM_stat
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # print("HuTao-Homa-4Red-EMsand low HP with E")
+    # print(
+    #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+    #         stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    # # HuTao-Homa-4Red-HPsand
+    # stat = Homa_Red_HP_stat
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # print("HuTao-Homa-4Red-HPsand low HP with E")
+    # print(
+    #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+    #         stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    # # HuTao-Homa-CW_WT-HPsand
+    # stat = Homa_CW_WT_HP_stat
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # print("HuTao-Homa-CW_WT-HPsand low HP with E")
+    # print(
+    #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+    #         stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    # # HuTao-Homa-CW_Totm-EMsand
+    stat = Homa_CW_TM_EM_stat
+    stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    print("HuTao-Homa-CW_Totm-HPsand low HP with E")
+    print(
+        "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+            stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    ##CW
+    ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
+    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_CW=True, using_ZL=True)
+    # print(sequence)
+    # print(total_dmg)
+    # print(vape)
+    # print(sum(total_dmg), dps)
+
+    ##Red
+    ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
+    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_Red=True, using_ZL=True)
+    # print(sequence)
+    # print(total_dmg)
+    # print(vape)
+    # print(sum(total_dmg), dps)
+
+    # ##2-2
+    # ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
+    total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat,using_4_Red=False, using_ZL=True)
+    print(sequence)
+    print(total_dmg)
+    print(vape)
+    print(sum(total_dmg), dps)
+
