@@ -3,7 +3,50 @@
 ## Instruction
 Run the main python file
 
-## Setup
+## Hu Tao Vape setup
+Comp: ZL/CY(C2)/XQ(withNO)/HT
+
+Rotation: ZL E -> CY E Q -> XQ Q E E -> HT E Q 6xN1C
+
+DPS time: 9s
+
+Rotation time: 17s (XQ Q cd)
+
+Weapon: Homa R1
+
+Sets:
+
+| Set                         | ATK  | HP    | EM  | CR | CD  | Pyro |
+|-----------------------------|------|-------|-----|----|-----|------|
+| 4CW-EMsand-14CR-1CD-5HP     | 3205 | 27314 | 187 | 82 | 161 | 102  |
+| 4CW-HPsand-14CR-1CD-5EM     | 3457 | 30689 | 99  | 82 | 161 | 102  |
+| 4Red-EMsand-14CR-1CD-5HP    | 3334 | 27314 | 187 | 82 | 161 | 80   |
+| 4Red-HPsand-14CR-1CD-5EM    | 3585 | 30689 | 99  | 82 | 161 | 80   |
+| CW_WT-HPsand-14CR-1CD-5EM   | 3457 | 30689 | 179 | 82 | 161 | 95   |
+| CW_Totm-EMsand-14CR-1CD-5EM | 3148 | 26552 | 285 | 82 | 161 | 95   |
+
+DPS:
+
+|            | Melt-Vape? | 4CW-EMsand | 4CW-HPsand | 4Red-EMsand | 4Red-HPsand | CW_WT-HPsand | Homa-CW_Totm-EMsand |
+|------------|------------|------------|------------|-------------|-------------|--------------|---------------------|
+| Q_hit_melt | True       | 127237     | 123818     | 105666      | 101283      | 117577       | 119826              |
+| NA1        | True       | 12656      | 12316      | 13436       | 12879       | 11695        | 11918               |
+| CA         | True       | 36700      | 35714      | 38963       | 37347       | 33913        | 34562               |
+| NA1        | False      | 5710       | 6158       | 6747        | 7256        | 5930         | 5400                |
+| CA         | True       | 36700      | 35714      | 38963       | 37347       | 33913        | 34562               |
+| NA1        | False      | 5710       | 6158       | 6747        | 7256        | 5930         | 5400                |
+| CA         | True       | 36700      | 35714      | 38963       | 37347       | 33913        | 34562               |
+| NA1        | True       | 12656      | 12316      | 13436       | 12879       | 11695        | 5400                |
+| CA         | True       | 36700      | 35714      | 38963       | 37347       | 33913        | 34562               |
+| NA1        | False      | 5710       | 6158       | 6747        | 7256        | 5930         | 11918               |
+| CA         | True       | 36700      | 35714      | 38963       | 34150       | 33913        | 34562               |
+| NA1        | False      | 5710       | 6158       | 6747        | 7256        | 5930         | 5400                |
+| CA         | True       | 33572      | 35714      | 38963       | 37347       | 33913        | 31647               |
+| 2xBlossom  | True       | 34998      | 34057      | 29064       | 27859       | 32341        | 34562               |
+| Total      |            | 430590     | 421429     | 422373      | 408013      | 400513       | 405603              |
+| DPS        |            | 25328      | 24789      | 24845       | 24000       | 23559        | 23859               |
+
+## Diluc Vape Setup
 Diluc only dmg calculate for Diluc/XQ/Benny/Sucrose comp over 15s rotation (3s for support)
 
 Diluc lvl 90, 6/6/6 Talent with WGS R1 no skill proc, 4 CW with CD/Pyro/ATK, 11 CR rolls, 4 CD rolls
