@@ -61,6 +61,7 @@ class Weapon:
             self.CD = 0.662
             self.DMG_Bonus = 0.
             self.ATK_HP_scale = weapon_skill_proc * (0.008 + 0.002 * (refinement_level - 1))
+            self.ATK_Low_HP_scale = weapon_skill_proc * (0.01 + 0.002 * (refinement_level - 1))
 
         elif weapon_name == "DB":
             self.BaseATK = 454.

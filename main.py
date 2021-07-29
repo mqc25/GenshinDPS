@@ -155,7 +155,7 @@ if __name__ == '__main__':
 
     # # HuTao-Homa-4CW-EMsand
     # stat = Homa_CW_EM_stat
-    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     # stat.DMG_Bonus += 0.075
     # print("HuTao-Homa-4CW-EMsand low HP with E")
     # print("BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
@@ -163,7 +163,7 @@ if __name__ == '__main__':
 
     # # HuTao-Homa-4CW-HPsand
     # stat = Homa_CW_HP_stat
-    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     # stat.DMG_Bonus += 0.075
     # print("HuTao-Homa-4CW-HPsand low HP with E")
     # print(
@@ -172,7 +172,7 @@ if __name__ == '__main__':
 
     # # HuTao-Homa-4Red-EMsand
     # stat = Homa_Red_EM_stat
-    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     # print("HuTao-Homa-4Red-EMsand low HP with E")
     # print(
     #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
     # # HuTao-Homa-4Red-HPsand
     # stat = Homa_Red_HP_stat
-    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     # print("HuTao-Homa-4Red-HPsand low HP with E")
     # print(
     #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
@@ -188,15 +188,15 @@ if __name__ == '__main__':
 
     # # HuTao-Homa-CW_WT-HPsand
     # stat = Homa_CW_WT_HP_stat
-    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    # stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     # print("HuTao-Homa-CW_WT-HPsand low HP with E")
     # print(
     #     "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
     #         stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
 
-    # # HuTao-Homa-CW_Totm-EMsand
+    # # # HuTao-Homa-CW_Totm-EMsand
     stat = Homa_CW_TM_EM_stat
-    stat.ATK += stat.HP * (Homa.ATK_HP_scale + HuTao.E_atk_buff[0])
+    stat.ATK += stat.HP * (Homa.ATK_HP_scale + Homa.ATK_Low_HP_scale + HuTao.E_atk_buff[0])
     print("HuTao-Homa-CW_Totm-HPsand low HP with E")
     print(
         "BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
@@ -211,7 +211,7 @@ if __name__ == '__main__':
     # print(sum(total_dmg), dps)
 
     ##Red
-    ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
+    # # rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
     # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_Red=True, using_ZL=True, usingC2Chong=True)
     # print(sequence)
     # print(total_dmg)
