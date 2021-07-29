@@ -204,7 +204,7 @@ if __name__ == '__main__':
 
     ##CW
     ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
-    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_CW=True, using_ZL=True)
+    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_CW=True, using_ZL=True, usingC2Chong=True)
     # print(sequence)
     # print(total_dmg)
     # print(vape)
@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
     ##Red
     ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
-    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_Red=True, using_ZL=True)
+    # total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_Red=True, using_ZL=True, usingC2Chong=True)
     # print(sequence)
     # print(total_dmg)
     # print(vape)
@@ -220,7 +220,7 @@ if __name__ == '__main__':
 
     # ##2-2
     # ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
-    total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat,using_4_Red=False, using_ZL=True)
+    total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat,using_4_Red=False, using_ZL=True, usingC2Chong=True)
     print(sequence)
     print(total_dmg)
     print(vape)

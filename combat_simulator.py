@@ -296,7 +296,7 @@ def KkomiCAVapeRotation(character, stat, using_4_WT=True, enemy_level=100, enemy
 
 def HuTaoVape(character, stat, using_4_CW=False, using_4_Red=False, enemy_level=100, enemy_RES=0.1, using_VV=False,
                       using_ZL=False, usingNO=False, usingC2Chong=False, extra_shred=0., def_shred=0.):
-    rotation_time = 21.
+    rotation_time = 20.
     if usingC2Chong:
         rotation_time *= 0.85
     if usingNO:
