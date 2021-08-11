@@ -3,7 +3,7 @@
 ## Instruction
 Run the main python file
 
-## Yoi melt setuo
+## Yoi melt setup
 - Comp: Yoi(C0)/Kazu(C2)/Benny(C5)/Diona(C6) assume all T10
 - Rotation time: 18s
 - DPS time: 10s
