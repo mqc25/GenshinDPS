@@ -397,7 +397,7 @@ def YoiMelt(character, stat, using_4_CW=False, using_4_Red=False, enemy_level=10
             vape.append(True)
             dmg = calculate_dmg(stat, character.NA_chain_damage[na_chain]/2 * character.E_na_buff[0], enemy_multiplier, melt_multiplier) \
                   + calculate_dmg(stat, character.NA_chain_damage[na_chain]/2, enemy_multiplier)
-        elif current_atk == "NA2" or current_atk == "NA5":
+        elif current_atk == "NA3" or current_atk == "NA5":
             vape.append(True)
             dmg = calculate_dmg(stat, character.NA_chain_damage[na_chain] * character.E_na_buff[0], enemy_multiplier, melt_multiplier)
         else:

@@ -250,6 +250,9 @@ def runYoiComp():
     # TP buff
     stat.DMG_Bonus += TP.NA_Bonus
 
+    # 1 CW buff
+    stat.DMG_Bonus += 0.075
+
     # Kazu buff
     stat.DMG_Bonus += 0.4
     print("Yoimiya-TP-4CW-ATKSand only E")
