@@ -3,6 +3,41 @@
 ## Instruction
 Run the main python file
 
+## Yoi melt setuo
+- Comp: Yoi(C0)/Kazu(C2)/Benny(C5)/Diona(C6) assume all T10
+- Rotation time: 18s
+- DPS time: 10s
+- Weapon: R1 Thunder Pulse
+- Set: 4CW
+- Stat after all team buff
+
+| Set                         | ATK  | HP    | EM  | CR | CD  | Pyro |
+|-----------------------------|------|-------|-----|----|-----|------|
+| 4CW-ATKsand-9CD-6CR-5EM     | 3310 | 14944 | 498 | 80 | 176 | 61.6 |
+
+DPS sequence:
+
+| Sequence | Melt? | DMG    |
+|----------|-------|--------|
+| NA1      | True  | 50070  |
+| NA2      | False | 22112  |
+| NA3      | True  | 115209 |
+| NA4      | False | 32252  |
+| NA5      | True  | 139378 |
+| NA1      | True  | 52080  |
+| NA2      | False | 22993  |
+| NA3      | True  | 119761 |
+| NA4      | False | 33517  |
+| NA5      | True  | 144799 |
+| NA1      | True  | 54091  |
+| NA2      | False | 23697  |
+| NA3      | True  | 122492 |
+| NA4      | False | 34023  |
+| NA5      | True  | 145883 |
+| NA1      | True  | 54091  |
+| NA2      | False | 23697  |
+| Total    | 1190153 | DPS: 66119 |
+
 ## Hu Tao Vape setup
 Comp: ZL/CY(C2)/XQ(withNO)/HT
 
