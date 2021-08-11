@@ -74,3 +74,15 @@ class Weapon:
             self.CR = 0.
             self.CD = 0.
             self.DMG_Bonus = weapon_skill_proc * (0.2 + 0.04 * (refinement_level - 1))
+
+        elif weapon_name == "TP":
+            self.BaseATK = 608.
+            self.HP_percent = 0.
+            self.Heal_Bonus = 0.
+            self.DEF_percent = 0.
+            self.ATK_percent = 0.2 + (0.05 * (refinement_level - 1))
+            self.EM = 0.
+            self.ER = 0.
+            self.CR = 0.
+            self.CD = 0.662
+            self.NA_Bonus = 0.4 + 0.1 * (refinement_level - 1)

@@ -86,9 +86,6 @@ def runKkomiVapeCal():
     print("Total Dmg: {:.2f} DPS over 15s: {:.2f}".format(sum(total_dmg), sum(total_dmg) / 15.))
 
 def runHTVapeComp(character, weapon, artifact, usingChongC2=False, usingNO=False, usingZL=False):
-    pass
-
-if __name__ == '__main__':
     HuTao = character.HuTao()
 
     # R1 Homa low HP
@@ -101,8 +98,9 @@ if __name__ == '__main__':
     CW_HP.give_art_sub_stat(["CR", "CD", "EM"], [14, 1, 5])
     CW_HP.give_art_set_bonus("CW", None)
 
-    Homa_CW_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_HP, using_NO=True, pyro_RES=False, benny_Buff=0.,
-                                                  EM_Buff=0)
+    Homa_CW_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_HP, using_NO=True, pyro_RES=False,
+                                                             benny_Buff=0.,
+                                                             EM_Buff=0)
 
     # 4CW-EMsand 11 CR rolls 4 CD rolls
     CW_EM = Artfiact()
@@ -110,8 +108,9 @@ if __name__ == '__main__':
     CW_EM.give_art_sub_stat(["CR", "CD", "HP_percent"], [14, 1, 5])
     CW_EM.give_art_set_bonus("CW", None)
 
-    Homa_CW_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_EM, using_NO=True, pyro_RES=False, benny_Buff=0.,
-                                                  EM_Buff=0)
+    Homa_CW_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_EM, using_NO=True, pyro_RES=False,
+                                                             benny_Buff=0.,
+                                                             EM_Buff=0)
 
     # 4Red-HPsand 11 CR rolls 4 CD rolls
     Red_HP = Artfiact()
@@ -120,8 +119,8 @@ if __name__ == '__main__':
     Red_HP.give_art_set_bonus("Red", None)
 
     Homa_Red_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, Red_HP, using_NO=True, pyro_RES=False,
-                                                             benny_Buff=0.,
-                                                             EM_Buff=0)
+                                                              benny_Buff=0.,
+                                                              EM_Buff=0)
 
     # 4Red-EMsand 11 CR rolls 4 CD rolls
     Red_EM = Artfiact()
@@ -130,8 +129,8 @@ if __name__ == '__main__':
     Red_EM.give_art_set_bonus("Red", None)
 
     Homa_Red_EM_stat = combat_simulator.final_stat_calculator(HuTao, Homa, Red_EM, using_NO=True, pyro_RES=False,
-                                                             benny_Buff=0.,
-                                                             EM_Buff=0)
+                                                              benny_Buff=0.,
+                                                              EM_Buff=0)
 
     # 2CW-2WT-HPsand 11 CR rolls 4 CD rolls for Homa
     CW_WT_HP = Artfiact()
@@ -140,8 +139,8 @@ if __name__ == '__main__':
     CW_WT_HP.give_art_set_bonus("CW", "WT")
 
     Homa_CW_WT_HP_stat = combat_simulator.final_stat_calculator(HuTao, Homa, CW_WT_HP, using_NO=True, pyro_RES=False,
-                                                             benny_Buff=0.,
-                                                             EM_Buff=0)
+                                                                benny_Buff=0.,
+                                                                EM_Buff=0)
 
     # 2CW-2Totm-EMsand 11 CR rolls 4 CD rolls for Homa
     CW_TM_EM = Artfiact()
@@ -220,9 +219,49 @@ if __name__ == '__main__':
 
     # ##2-2
     # ## rotation of ZL/CY/XQ/HT assume ZL is shield bot, CY has C2, XQ has NO and HT will melt the first Q instead of vape
-    total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat,using_4_Red=False, using_ZL=True, usingC2Chong=True)
+    total_dmg, sequence, vape, dps = combat_simulator.HuTaoVape(HuTao, stat, using_4_Red=False, using_ZL=True,
+                                                                usingC2Chong=True)
     print(sequence)
     print(total_dmg)
     print(vape)
     print(sum(total_dmg), dps)
+
+def runYoiComp():
+    Yoi = character.Yoimiya()
+
+    # R1 Thunder Pulse
+    TP = weapon.Weapon("TP", refinement_level=1, weapon_skill_proc=True)
+
+    # Artifact with 15 crit roll and 5 EM roll
+    # 4CW-HPsand 11 CR rolls 4 CD rolls for Homa
+    CW_ATK = Artfiact()
+    CW_ATK.give_art_main_stat(["CR", "ATK", "DMG_Bonus_Ele"])
+    CW_ATK.give_art_sub_stat(["CD", "CR", "EM"], [9, 6, 5])
+    CW_ATK.give_art_set_bonus("CW", None)
+    benny_buff = (191 + 674)*1.19
+    EM_buff = 200 + 200
+
+    TP_CW_ATK_stat = combat_simulator.final_stat_calculator(Yoi, TP, CW_ATK, using_NO=True, pyro_RES=True,
+                                                             benny_Buff=benny_buff,
+                                                             EM_Buff=EM_buff)
+    # Yoimiya-TP-4CW-ATKSand
+    stat = TP_CW_ATK_stat
+
+    # TP buff
+    stat.DMG_Bonus += TP.NA_Bonus
+
+    # Kazu buff
+    stat.DMG_Bonus += 0.4
+    print("Yoimiya-TP-4CW-ATKSand only E")
+    print("BaseATK: {:.2f} ATK%: {:.2f} Total ATK: {:.2f} CR: {:.2f} CD: {:.2f} DMG_Bonus: {:.2f} EM: {:.2f} HP: {:.2f}".format(
+            stat.BaseATK, stat.ATK_percent, stat.ATK, stat.CR, stat.CD, stat.DMG_Bonus, stat.EM, stat.HP))
+
+    total_dmg, sequence, vape, dps = combat_simulator.YoiMelt(Yoi, stat, using_4_CW=True, using_VV=True)
+    print(sequence)
+    print(total_dmg)
+    print(vape)
+    print(sum(total_dmg), dps)
+
+if __name__ == '__main__':
+    runYoiComp()
 

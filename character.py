@@ -81,5 +81,20 @@ class HuTao(Character):
         if is_low_hp:
             self.DMG_Bonus += 0.33
 
+class Yoimiya(Character):
+    def __init__(self):
+        Character.__init__(self)
+        self.BaseATK = 323
+        self.BaseDEF = 615
+        self.BaseHP = 10164
+        self.NA_chain_framecount = [27, 24, 37, 40, 57]
+        self.NA_chain_damage = [0.6359*2, 1.2199, 1.6768, 0.8757*2, 1.997]
+        self.E_framecount = [23]
+        self.E_na_buff = [1.6174]
+        self.Q_frame_count = [115]
+        self.Q_damage = [2.2896, 2.196]
+        self.CR += 0.242
+
+
 
 

@@ -367,3 +367,52 @@ def HuTaoVape(character, stat, using_4_CW=False, using_4_Red=False, enemy_level=
         vape.append(True)
 
     return total_dmg, sequence, vape, sum(total_dmg) / rotation_time
+
+def YoiMelt(character, stat, using_4_CW=False, using_4_Red=False, enemy_level=100, enemy_RES=0.1, using_VV=False,
+                      using_ZL=False, extra_shred=0., def_shred=0., EM_Buff=0.):
+    rotation_time = 18.
+    DPS_rotation_time = 10.
+
+    melt_multiplier = 2.0 * (1. + (278 * stat.EM / (stat.EM + 1400.) / 100. + 0.15 * using_4_CW))
+
+    enemy_multiplier = final_enemy_modifier(your_level=character.Level, enemy_level=enemy_level,
+                                            enemy_RES=enemy_RES,
+                                            using_VV=using_VV, using_ZL=using_ZL, extra_shred=extra_shred,
+                                            def_shred=def_shred)
+
+    print("Melt multiplier: {:.2f} Enemy multiplier: {:.2f}".format(melt_multiplier, enemy_multiplier))
+
+    # start with E and freeze
+    timer = 0.
+    total_dmg = []
+    sequence = []
+    vape = []
+    na_chain = 0
+    E_buff_count = 0
+
+    while timer < DPS_rotation_time*60:
+        current_atk = "NA" + str(na_chain+1)
+        sequence.append(current_atk)
+        if current_atk == "NA1":
+            vape.append(True)
+            dmg = calculate_dmg(stat, character.NA_chain_damage[na_chain]/2 * character.E_na_buff[0], enemy_multiplier, melt_multiplier) \
+                  + calculate_dmg(stat, character.NA_chain_damage[na_chain]/2, enemy_multiplier)
+        elif current_atk == "NA2" or current_atk == "NA5":
+            vape.append(True)
+            dmg = calculate_dmg(stat, character.NA_chain_damage[na_chain] * character.E_na_buff[0], enemy_multiplier, melt_multiplier)
+        else:
+            vape.append(False)
+            dmg = calculate_dmg(stat, character.NA_chain_damage[na_chain] * character.E_na_buff[0], enemy_multiplier, 1.0)
+
+        # A1 buff
+        if E_buff_count < 10:
+            E_buff_count += 1
+            stat.DMG_Bonus += 0.02
+
+        total_dmg.append(dmg)
+        timer += character.NA_chain_framecount[na_chain]
+        na_chain += 1
+        na_chain = na_chain % len(character.NA_chain_framecount)
+
+
+    return total_dmg, sequence, vape, sum(total_dmg) / rotation_time
